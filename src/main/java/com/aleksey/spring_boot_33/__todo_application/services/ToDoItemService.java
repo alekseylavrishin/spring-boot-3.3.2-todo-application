@@ -32,11 +32,24 @@ public class ToDoItemService {
         return ToDoItemRepository.findById(id);
     }
 
+    /**
+     * Save a provided ToDoItem to the repository
+     * @param item The item you want saved
+     * @return The saved item
+     */
     public ToDoItem save(ToDoItem item) {
         if (item.getId() == null) {
             item.setCreatedAt(Instant.now());
         }
         item.setUpdatedAt(Instant.now());
         return ToDoItemRepository.save(item);
+    }
+
+    /**
+     * Deletes a specific item from the ToDoItemRepository
+     * @param item The item you want to be deleted
+     */
+    public void delete(ToDoItem item) {
+        ToDoItemRepository.delete(item);
     }
 }
