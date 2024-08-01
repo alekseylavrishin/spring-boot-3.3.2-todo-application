@@ -23,7 +23,7 @@ public class ToDoFormController {
      * @return Name of view that is returned
      */
     @GetMapping("/create-todo")
-    public String showCreateForm(ToDoItem item) {
+    public String showCreateForm(@ModelAttribute("todoItem") ToDoItem todoItem) {
         return "new-todo-item";
     }
 
@@ -31,12 +31,12 @@ public class ToDoFormController {
      * Listens for the POST call
      */
     @PostMapping("/todo")
-    public String createToDoItem(@Valid ToDoItem item, BindingResult result, Model model) {
+    public String createToDoItem(@Valid ToDoItem todoItem, BindingResult result, Model model) {
         ToDoItem TDItem = new ToDoItem();
-        TDItem.setDescription(item.getDescription());
-        TDItem.setComplete(item.isComplete());
+        TDItem.setDescription(todoItem.getDescription());
+        TDItem.setComplete(todoItem.isComplete());
 
-        service.save(item);
+        service.save(todoItem);
         return "redirect:/";
     }
 }
