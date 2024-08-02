@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -37,6 +38,15 @@ public class ToDoFormController {
         TDItem.setComplete(todoItem.isComplete());
 
         service.save(todoItem);
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteTodoItem(@PathVariable("id") Long id, Model model) {
+        ToDoItem todoItem = service.getById(id)
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "Todo Item id: " + id + " not found"));
+        service.delete(todoItem);
         return "redirect:/";
     }
 }
