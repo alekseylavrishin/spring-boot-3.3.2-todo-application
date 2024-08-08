@@ -40,6 +40,10 @@ public class ToDoItemService {
         if (item.getId() == null) {
             item.setCreatedAt(Instant.now());
         }
+
+        if(item.getIsComplete() == null) {
+            item.setIsComplete(false);
+        }
         item.setUpdatedAt(Instant.now());
         return ToDoItemRepository.save(item);
     }
