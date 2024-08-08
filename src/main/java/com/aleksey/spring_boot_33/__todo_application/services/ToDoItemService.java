@@ -5,7 +5,6 @@ import com.aleksey.spring_boot_33.__todo_application.repositories.ToDoItemReposi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.time.Instant;
 import java.util.Optional;
 
@@ -52,4 +51,6 @@ public class ToDoItemService {
     public void delete(ToDoItem item) {
         ToDoItemRepository.delete(item);
     }
+
+
 }

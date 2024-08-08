@@ -19,7 +19,7 @@ public class ToDoItem implements Serializable {
 
     private String description;
 
-    private boolean isComplete;
+    private Boolean isComplete;
 
     private Instant createdAt;
 
