@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 @Getter
 @Setter
@@ -34,12 +35,12 @@ public class ToDoItem implements Serializable {
     }
 
     /**
-     * Converts an instant into mm.dd.yyyy format
+     * Converts an instant into mm/dd/yyyy hh:mm a format. E.g. 08/08/2024 03:08 PM
      * @param instant The instant being converted to human-readable format
-     * @return A human-readable representation of the instant in mm.dd.yyyy format
+     * @return A human-readable representation of the instant in mm/dd/yyyy hh:mm a format
      */
     public String formatDate(Instant instant) {
-        final String PATTERN_FORMAT = "MM.dd.yyyy";
+        final String PATTERN_FORMAT = "MM/dd/yyyy hh:mm a";
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(PATTERN_FORMAT)
                 .withZone(ZoneId.systemDefault());
