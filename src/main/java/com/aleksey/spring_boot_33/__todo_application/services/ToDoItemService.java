@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.Optional;
 
+/**
+ * Responsible for CRUD operations for to-do items
+ */
 @Service
 public class ToDoItemService {
 
